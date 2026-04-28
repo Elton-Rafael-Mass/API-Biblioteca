@@ -52,12 +52,18 @@ const updateUser = async (id, data) => {
   return user;
 };
 
-const deactivateUserById = async (id, active) => {
-  if (active === undefined)  {
-    const error = new Error("O campo active é obrigatório");
-    error.statusCode = 400;
+
+const deactivateUserById = async (id) => {
+  const user = await User.findById(id);
+
+  if (!user) {
+    const error = new Error("User não encontrado");
+    error.statusCode = 404;
     throw error;
   }
+
+  user.active = false;
+  await user.save();
 
   return user;
 };

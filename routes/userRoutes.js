@@ -8,10 +8,6 @@ router.get("/", userController.getAllUsers);
 
 // Rotas específicas precisam vir antes de /:id
 
-
-
-
-
 router.get("/:id", userController.getUserById);
 router.put("/:id", userController.updateUser);
 router.patch("/:id/active", userController.deactivateUserById);

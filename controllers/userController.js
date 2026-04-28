@@ -37,13 +37,13 @@ const updateUser = async (req, res, next) => {
 };
 
 const deactivateUserById = async (req, res, next) => {
-  try{
-    const user = await userService.deactivateUserById(req.params.id, req.body.active)
+  try {
+    const user = await userService.deactivateUserById(req.params.id);
     res.json(user);
   } catch (error) {
     next(error);
   }
-}
+};
 
 
 export default {
